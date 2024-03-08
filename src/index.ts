@@ -14,13 +14,13 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.get("/", (req: Request, res: Response) => {
-  res.send("Hello World");
-});
-
 //Routes
 app.use("/auth", AuthRouter);
 app.use("/videos", VideoRouter);
+
+app.get("/", (req: Request, res: Response) => {
+  res.send("Hello World");
+});
 
 const port = process.env.PORT || 5000;
 

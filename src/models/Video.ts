@@ -1,8 +1,6 @@
 import { DataTypes, Model, Optional } from "sequelize";
 import sequelizeConnection from ".";
 
-
-
 class Video extends Model<VideoAttributes, VideoInput> implements VideoAttributes {
   public id!: number;
   public embedId!: string;

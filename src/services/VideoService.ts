@@ -6,14 +6,14 @@ abstract class IVideoService {
 
 export default class AuthService extends IVideoService {
     public static async getAllVideos() {
-        return VideoRepository.getAllVideos();
+        return await VideoRepository.getAllVideos();
     }
 
     public static async createVideo({ embedId, title, owner, description }: VideoInput) {
-        return VideoRepository.createVideo({ embedId, title, owner, description });
+        return await VideoRepository.createVideo({ embedId, title, owner, description });
     }
 
     public static async getVideoByOwner(owner: string) {
-        return VideoRepository.getVideoByOwner(owner);
+        return await VideoRepository.getVideoByOwner(owner);
     }
 }

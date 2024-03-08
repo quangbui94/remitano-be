@@ -1,4 +1,4 @@
-import User from "../models/user";
+import User from "../models/User";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
@@ -8,7 +8,7 @@ interface AuthRequestData {
 }
 
 abstract class IAuthService {
-  login(item: AuthRequestData): any {}
+  login(item: AuthRequestData): any { }
 }
 
 export default class AuthService extends IAuthService {

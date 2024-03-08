@@ -1,12 +1,24 @@
 {
   "extends": "@tsconfig/node16/tsconfig.json",
-  "compilerOptions": {},
+  "ts-node": {
+    "require": ["tsconfig-paths/register"],
+    "files": true
+  },
+  "compilerOptions": {
+    "paths": {
+      "*": ["types/*.d.ts"],
+      "@configs/*": ["configs/*"],
+      "@controllers/*": ["controllers/*"],
+      "@models/*": ["models/*"],
+      "@repositories/*": ["repositories/*"],
+      "@routes/*": ["routes/*"],
+      "@services/*": ["services/*"],
+    },
+    "baseUrl": "src"
+  },
   "include": ["src"],
   "exclude": ["node_modules"],
   "target": "es6",
   "experimentalDecorators": true,
   "emitDecoratorMetadata": true,
-  "paths": {
-    "*": ["types/*.d.ts"]
-  }
 }

@@ -1,12 +1,13 @@
 import "dotenv/config";
 import "reflect-metadata";
-import "./models/index";
+import "@models/index";
 
 import cors from "cors";
 import express, { Request, Response } from "express";
 
-import connection from "./models";
-import AuthRouter from "./routes/Auth";
+import connection from "@models/index";
+import AuthRouter from "@routes/Auth";
+import VideoRouter from "@routes/Video";
 
 const app = express();
 
@@ -19,6 +20,7 @@ app.get("/", (req: Request, res: Response) => {
 
 //Routes
 app.use("/auth", AuthRouter);
+app.use("/videos", VideoRouter);
 
 const port = process.env.PORT || 5000;
 

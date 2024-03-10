@@ -17,6 +17,7 @@ export default class AuthService extends IAuthService {
 
     if (!password || !email) {
       console.log("Missing password or username");
+      throw new Error('Missing credentials!');
     }
 
     try {

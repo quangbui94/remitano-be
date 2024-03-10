@@ -8,6 +8,12 @@ abstract class IVideoController {
 export default class VideoController extends IVideoController {
   public static async getAllVideos(req: Request, res: Response) {
     const allVideos = await VideoService.getAllVideos();
-    res.send(allVideos);
+    res.status(200).send(allVideos);
+  }
+
+  public static async shareVideo(req: Request, res: Response) {
+    const { embedId, email } = req.body;
+    const newVideo = await VideoService.createVideo({ embedId, email });
+    res.status(200).send(newVideo);
   }
 }

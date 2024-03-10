@@ -1,7 +1,13 @@
 import VideoRepository from "@repositories/Video";
+import axios from "axios";
 
 abstract class IVideoService {
     getAllVideos(): any { }
+}
+
+interface VideoCreateInput {
+    embedId: string;
+    email: string;
 }
 
 export default class AuthService extends IVideoService {
@@ -9,8 +15,29 @@ export default class AuthService extends IVideoService {
         return await VideoRepository.getAllVideos();
     }
 
-    public static async createVideo({ embedId, title, owner, description }: VideoInput) {
-        return await VideoRepository.createVideo({ embedId, title, owner, description });
+    public static async createVideo({ embedId, email }: VideoCreateInput) {
+        try {
+            const videoInfos = await axios({
+                method: 'get',
+                url: `https://www.googleapis.com/youtube/v3/videos?id=${embedId}&key=${process.env.YOUTUBE_API_KEY}&part=snippet`,
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+            if (!videoInfos) {
+                throw new Error('Something is wrong');
+            }
+            const { title, description } = videoInfos.data.items[0].snippet;
+            const newVideo = await VideoRepository.createVideo({ embedId, title, owner: email, description });
+
+            if (!newVideo) {
+                throw new Error('Cant share video');
+            }
+            // return newVideo;
+            throw new Error('Cant share video');
+        } catch (error: any) {
+            return error.message;
+        }
     }
 
     public static async getVideoByOwner(owner: string) {

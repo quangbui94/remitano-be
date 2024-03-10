@@ -11,20 +11,21 @@ import VideoRouter from "@routes/Video";
 
 const app = express();
 
-app.use(express.json());
-app.use(cors());
-
-//Routes
-app.use("/auth", AuthRouter);
-app.use("/videos", VideoRouter);
-
-app.get("/", (req: Request, res: Response) => {
-  res.send("Hello World");
-});
-
 const port = process.env.PORT || 5000;
 
 const start = async () => {
+  //Middlewares
+  app.use(express.json());
+  app.use(cors());
+
+  //Routes
+  app.use("/auth", AuthRouter);
+  app.use("/videos", VideoRouter);
+
+  app.get("/", (req: Request, res: Response) => {
+    res.send("Hello World");
+  });
+
   try {
     await connection.sync();
     app.listen(port, () => {

@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import AuthService from "../services/AuthServices";
 
 abstract class IAuthController {
-  login(req: Request, res: Response): void {}
+  login(): void {}
 }
 
 export default class AuthController extends IAuthController {
@@ -13,13 +13,13 @@ export default class AuthController extends IAuthController {
       const token = await AuthService.login({ email, password });
 
       if (token) {
-        res.status(200).send({ token });
+        res.status(200).send({ token, email });
         return;
       }
       res.status(401).send("Authentication failed");
-    } catch (error) {
+    } catch (error: any) {
       console.log(error);
-      res.status(401).send("Authentication failed");
+      res.status(401).send(error.message);
     }
   }
 }

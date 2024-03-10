@@ -1,4 +1,5 @@
 import Video from '@models/Video';
+import { BadRequest } from '@shared/ErrorCustom';
 
 export default class VideoRepository {
     private Video: typeof Video;
@@ -12,6 +13,10 @@ export default class VideoRepository {
     }
   
     static async createVideo({embedId, title, owner, description}: VideoInput): Promise<Video> {
+      const isVideoShared = await Video.findOne({ where: { embedId, owner } });
+      if (isVideoShared) {
+        throw new BadRequest('You already shared this video');
+      }
       return await Video.create({ embedId, title, owner, description });
     }
   

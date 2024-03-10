@@ -24,14 +24,13 @@ const start = async () => {
     console.log('WebSocket client connected');
 
     // Handle video sharing event
-    socket.on('shareVideo', (data) => {
-      console.log('Video shared:', data);
-      // Broadcast notification to all connected clients
-      io.emit('videoShared', data);
-    });
-
-    socket.on('connection', (data) => {
-      console.log('Video shared:', data.message);
+    socket.on('shareVideo', async (data) => {
+      // Broadcast notification to all connected clients except the message owner
+      const { title, email } = data;
+      
+      socket.broadcast.emit('shareVideo', {
+        message: `The user ${email} has shared the video ${title}`
+      });
     });
   });
   //Middlewares

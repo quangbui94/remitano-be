@@ -9,6 +9,8 @@ import connection from "@models/index";
 import AuthRouter from "@routes/Auth";
 import VideoRouter from "@routes/Video";
 
+import ErrorHandler from "@middlewares/errorMiddleware";
+
 const app = express();
 
 const port = process.env.PORT || 5000;
@@ -25,6 +27,8 @@ const start = async () => {
   app.get("/", (req: Request, res: Response) => {
     res.send("Hello World");
   });
+
+  app.use(ErrorHandler);
 
   try {
     await connection.sync();

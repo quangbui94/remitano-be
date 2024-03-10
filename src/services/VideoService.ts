@@ -1,4 +1,5 @@
 import VideoRepository from "@repositories/Video";
+import { InteralError } from "@shared/ErrorCustom";
 import axios from "axios";
 
 abstract class IVideoService {
@@ -25,22 +26,17 @@ export default class AuthService extends IVideoService {
                 },
             });
             if (!videoInfos) {
-                throw new Error('Something is wrong');
+                throw new InteralError('Something is wrong');
             }
             const { title, description } = videoInfos.data.items[0].snippet;
             const newVideo = await VideoRepository.createVideo({ embedId, title, owner: email, description });
 
             if (!newVideo) {
-                throw new Error('Cant share video');
+                throw new InteralError('Cant share video');
             }
-            // return newVideo;
-            throw new Error('Cant share video');
+            return newVideo;
         } catch (error: any) {
-            return error.message;
+            throw error;
         }
-    }
-
-    public static async getVideoByOwner(owner: string) {
-        return await VideoRepository.getVideoByOwner(owner);
     }
 }

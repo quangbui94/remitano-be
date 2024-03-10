@@ -13,6 +13,8 @@
       "@repositories/*": ["repositories/*"],
       "@routes/*": ["routes/*"],
       "@services/*": ["services/*"],
+      "@middlewares/*": ["middlewares/*"],
+      "@shared/*": ["shared/*"],
     },
     "baseUrl": "src"
   },

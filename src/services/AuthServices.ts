@@ -1,6 +1,7 @@
 import User from "../models/User";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import { BadRequest } from "@shared/ErrorCustom";
 
 interface AuthRequestData {
   email: string;
@@ -16,8 +17,7 @@ export default class AuthService extends IAuthService {
     const { email, password } = item;
 
     if (!password || !email) {
-      console.log("Missing password or username");
-      throw new Error('Missing credentials!');
+      throw new BadRequest('Missing credentials!');
     }
 
     try {
@@ -36,15 +36,13 @@ export default class AuthService extends IAuthService {
       const validatePassword = await bcrypt.compare(password, user!.password);
 
       if (!validatePassword) {
-        console.log("Wrong username or password");
-        return;
+        throw new BadRequest('Invalid credentials!');
       }
 
       const token = await jwt.sign({ email }, "secret");
       return token;
     } catch (error) {
-      console.log(error);
-      return;
+      throw error;
     }
   }
 }

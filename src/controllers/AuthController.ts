@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import { Request, Response, NextFunction } from "express";
 import AuthService from "../services/AuthServices";
 
 abstract class IAuthController {
@@ -6,7 +6,7 @@ abstract class IAuthController {
 }
 
 export default class AuthController extends IAuthController {
-  public static async login(req: Request, res: Response) {
+  public static async login(req: Request, res: Response, next: NextFunction) {
     const { email, password } = req.body;
 
     try {
@@ -18,8 +18,7 @@ export default class AuthController extends IAuthController {
       }
       res.status(401).send("Authentication failed");
     } catch (error: any) {
-      console.log(error);
-      res.status(401).send(error.message);
+      next(error)
     }
   }
 }

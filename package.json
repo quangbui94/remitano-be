@@ -38,6 +38,7 @@
     "eslint": "^8.42.0",
     "husky": ">=6",
     "lint-staged": ">=10",
+    "module-alias": "^2.2.3",
     "prettier": "^2.8.8",
     "sequelize-typescript": "^2.1.5",
     "ts-node": "^10.9.1",
@@ -49,5 +50,16 @@
       "eslint --fix \"src/**/*{ts,js}\"",
       "prettier . --write"
     ]
+  },
+  "_moduleAliases": {
+    "@modules": "dist/rest/modules",
+    "@configs": ["src/configs"],
+    "@controllers": ["src/controllers"],
+    "@models": ["src/models"],
+    "@repositories": ["src/repositories"],
+    "@routes": ["src/routes"],
+    "@services": ["src/services"],
+    "@middlewares": ["src/middlewares"],
+    "@shared": ["src/shared"]
   }
 }

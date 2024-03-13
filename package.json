@@ -25,7 +25,10 @@
     "pg": "^8.11.0",
     "reflect-metadata": "^0.1.13",
     "sequelize": "^6.32.0",
-    "socket.io": "^4.7.4"
+    "socket.io": "^4.7.4",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.4.2"
   },
   "devDependencies": {
     "@tsconfig/node16": "^1.0.4",
@@ -40,10 +43,7 @@
     "lint-staged": ">=10",
     "module-alias": "^2.2.3",
     "prettier": "^2.8.8",
-    "sequelize-typescript": "^2.1.5",
-    "ts-node": "^10.9.1",
-    "tsconfig-paths": "^4.2.0",
-    "typescript": "^5.0.0"
+    "sequelize-typescript": "^2.1.5"
   },
   "lint-staged": {
     "src/**/*.{ts,js}": [
@@ -53,13 +53,29 @@
   },
   "_moduleAliases": {
     "@modules": "dist/rest/modules",
-    "@configs": ["src/configs"],
-    "@controllers": ["src/controllers"],
-    "@models": ["src/models"],
-    "@repositories": ["src/repositories"],
-    "@routes": ["src/routes"],
-    "@services": ["src/services"],
-    "@middlewares": ["src/middlewares"],
-    "@shared": ["src/shared"]
+    "@configs": [
+      "src/configs"
+    ],
+    "@controllers": [
+      "src/controllers"
+    ],
+    "@models": [
+      "src/models"
+    ],
+    "@repositories": [
+      "src/repositories"
+    ],
+    "@routes": [
+      "src/routes"
+    ],
+    "@services": [
+      "src/services"
+    ],
+    "@middlewares": [
+      "src/middlewares"
+    ],
+    "@shared": [
+      "src/shared"
+    ]
   }
 }

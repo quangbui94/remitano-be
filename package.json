@@ -4,12 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon src/index.ts",
+    "start": "ts-node src/index.ts",
     "lint": "eslint --fix \"src/**/*{ts,js}\"",
     "format": "prettier . --write \"src/**/*{ts,js,json,md}\"",
     "prepare": "husky install"
   },
-  "type": "module",
   "keywords": [],
   "author": "",
   "license": "ISC",

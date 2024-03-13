@@ -1,4 +1,4 @@
-import { CustomerError } from '@shared/ErrorCustom';
+import { CustomerError } from 'shared/ErrorCustom';
 import { Request, Response, NextFunction } from 'express';
 
 export default (err: CustomerError, req: Request, res: Response, next: NextFunction) => {

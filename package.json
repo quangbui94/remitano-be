@@ -9,6 +9,7 @@
     "format": "prettier . --write \"src/**/*{ts,js,json,md}\"",
     "prepare": "husky install"
   },
+  "type": "module",
   "keywords": [],
   "author": "",
   "license": "ISC",

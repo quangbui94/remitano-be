@@ -5,6 +5,7 @@
     "files": true
   },
   "compilerOptions": {
+    "types": ["node"],
     "paths": {
       "*": ["types/*.d.ts"],
       "@configs/*": ["configs/*"],

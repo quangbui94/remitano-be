@@ -1,15 +1,15 @@
 import "dotenv/config";
 import "reflect-metadata";
-import "models/index";
+import "./models/index";
 import http from 'http';
 import { Server } from 'socket.io';
 
 import cors from "cors";
 import express, { Request, Response } from "express";
 
-import connection from "models/index";
-import AuthRouter from "routes/Auth";
-import VideoRouter from "routes/Video";
+import connection from "./models/index";
+import AuthRouter from "./routes/Auth";
+import VideoRouter from "./routes/Video";
 
 import ErrorHandler from "middlewares/errorMiddleware";
 

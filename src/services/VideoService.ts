@@ -1,5 +1,5 @@
-import VideoRepository from "repositories/Video";
-import { InteralError } from "shared/ErrorCustom";
+import VideoRepository from "../repositories/Video";
+import { InteralError } from "../shared/ErrorCustom";
 import axios from "axios";
 
 abstract class IVideoService {

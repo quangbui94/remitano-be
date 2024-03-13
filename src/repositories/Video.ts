@@ -1,5 +1,5 @@
-import Video from 'models/Video';
-import { BadRequest } from 'shared/ErrorCustom';
+import Video from '../models/Video';
+import { BadRequest } from '../shared/ErrorCustom';
 
 export default class VideoRepository {
     private Video: typeof Video;

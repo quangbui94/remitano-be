@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_PATH=./src ts-node src/index.ts",
+    "start": "ts-node src/index.ts",
+    "start:dev": "ts-node src/index.ts dotenv_config_path=$(pwd)/.env.local",
     "lint": "eslint --fix \"src/**/*{ts,js}\"",
     "format": "prettier . --write \"src/**/*{ts,js,json,md}\"",
     "prepare": "husky install"

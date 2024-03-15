@@ -15,6 +15,9 @@ const connection = new Sequelize(
       idle: dbConfig.pool.idle,
       acquire: dbConfig.pool.acquire,
     },
+    dialectOptions: {
+      ssl: true
+    }
   }
 );
 
